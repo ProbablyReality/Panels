@@ -89,10 +89,11 @@
             android:layout_height="wrap_content"
             android:text="Posting To"
             android:id="@+id/textView6"
-            android:textSize="20sp"
+            android:textSize="18dp"
             android:textColor="#222222"
             android:gravity="center_vertical"
-            android:layout_margin="10dp" />
+            android:layout_margin="10dp"
+            android:layout_centerVertical="true" />
 
         <EditText
             android:layout_width="wrap_content"
@@ -101,7 +102,7 @@
             android:maxLines="1"
             android:lines="1"
             android:textColor="#333333"
-            android:textSize="20dp"
+            android:textSize="18dp"
             android:layout_alignWithParentIfMissing="false"
             android:layout_toRightOf="@+id/textView6"
             android:layout_centerVertical="true"
@@ -129,7 +130,7 @@
             android:layout_height="wrap_content"
             android:text="New Board"
             android:id="@+id/textView5"
-            android:textSize="20dp"
+            android:textSize="18dp"
             android:textColor="#222222"
             android:gravity="center_vertical"
             android:layout_centerVertical="true"
