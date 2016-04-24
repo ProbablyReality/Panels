@@ -91,6 +91,6 @@ public class CreatePanel extends AppCompatActivity {
         String panelUUID = String.valueOf(postCount);
         postCount++;
         //Writing the content to
-
+        toBoardView();
     }
 }
