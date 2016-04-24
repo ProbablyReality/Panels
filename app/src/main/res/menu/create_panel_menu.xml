@@ -1,0 +1,18 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/post"
+        android:icon="@mipmap/ic_send_white_24dp"
+        android:title="Send"
+        app:showAsAction="always"
+        android:orderInCategory="100"
+        />
+    <item
+        android:id="@+id/delete"
+        android:icon="@mipmap/ic_delete_white_24dp"
+        android:title="Delete"
+        app:showAsAction="always"
+        android:orderInCategory="200"
+        />
+
+</menu>

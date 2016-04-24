@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="?attr/actionBarSize"
+        android:elevation="4dp">
+
+    <RelativeLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@drawable/panel_header_shape"
+        android:contextClickable="true"
+        android:elevation="4dp"
+        android:id="@+id/header">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="This is an update too!"
+            android:id="@+id/editTitle"
+            android:layout_gravity="center_vertical"
+            android:elevation="4dp"
+            android:textColor="#FFFFFF"
+            android:textStyle="bold"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_margin="5dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Bob Vance"
+            android:id="@+id/authorName"
+            android:textColor="#eeeeee"
+            android:textStyle="bold|italic"
+            android:textSize="12dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_margin="5dp" />
+
+    </RelativeLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/header"
+        android:background="@drawable/panel_shape">
+
+        <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="I miss the old Kanye, straight from the vault Kanye Chop up the ghoul Kanye, used up his vats Kanye I hate the new Kanye, no skill check Kanye The option c Kanye, sarcastic rules Kanye I miss the sweet Kanye, super mutants At my feet Kanye I gotta to say, at that time I&apos;d like to meet Kanye"
+            android:textColor="#000000"
+            android:id="@+id/panelContent"
+            android:layout_below="@+id/header"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginBottom="5dp" />
+    </FrameLayout>
+
+</RelativeLayout>
