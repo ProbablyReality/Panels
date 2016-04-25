@@ -5,6 +5,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -40,10 +41,11 @@ public class CreatePanel extends AppCompatActivity {
         Intent intent = new Intent(this,BoardView.class);
         startActivity(intent);
     }
-    public void toCreateBoard(View view) {
+    public void toCreateBoard() {
         Intent intent = new Intent(this,CreateBoard.class);
         startActivity(intent);
     }
+
     //Click events for menu items
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -54,6 +56,9 @@ public class CreatePanel extends AppCompatActivity {
                 return true;
             case R.id.post:
                 SubmitPost();
+                return true;
+            case R.id.new_board:
+                toCreateBoard();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
@@ -91,6 +96,8 @@ public class CreatePanel extends AppCompatActivity {
         String panelUUID = String.valueOf(postCount);
         postCount++;
         //Writing the content to
-        toBoardView();
+
     }
+
+
 }

@@ -14,5 +14,10 @@
         app:showAsAction="always"
         android:orderInCategory="200"
         />
+    <item
+        android:id="@+id/new_board"
+        android:title="New Board"
+        android:orderInCategory="200"
+        />
 
 </menu>

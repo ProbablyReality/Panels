@@ -1,6 +1,10 @@
 package com.company.panels;
 
+import android.content.Context;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
+import android.provider.BaseColumns;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -28,6 +32,10 @@ public class CreateBoard extends AppCompatActivity {
         //TODO Save current values in case user returns
         toCreatePanel();
     }
+    public void toCreatePanel() {
+        Intent intent = new Intent(this,CreatePanel.class);
+        startActivity(intent);
+    }
     //Click events for menu items
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -37,7 +45,7 @@ public class CreateBoard extends AppCompatActivity {
                 //Detect if board already exists else continue
                 //Creating the board in sql
 
-                toCreatePanel();
+
                 return true;
             //case R.id.layout:
                 //TODO implement layout switching
@@ -46,9 +54,5 @@ public class CreateBoard extends AppCompatActivity {
             default:
                 return super.onOptionsItemSelected(item);
         }
-    }
-    public void toCreatePanel() {
-        Intent intent = new Intent(this,CreatePanel.class);
-        startActivity(intent);
     }
 }

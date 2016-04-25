@@ -21,6 +21,8 @@
         <activity
             android:name=".CreateBoard"
             android:windowSoftInputMode="adjustResize"/>
+        <android.database.sqlite
+            android:name="ManageSQL" />
     </application>
 
 </manifest>
