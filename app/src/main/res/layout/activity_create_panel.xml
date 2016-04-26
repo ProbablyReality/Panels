@@ -96,7 +96,7 @@
                 <EditText
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/panelBoard"
+                    android:id="@+id/editBoard"
                     android:maxLines="1"
                     android:lines="1"
                     android:textColor="#333333"
@@ -111,7 +111,9 @@
                     android:textStyle="italic"
                     android:layout_alignParentRight="true"
                     android:layout_marginRight="10dp"
-                    android:layout_marginLeft="10dp" />
+                    android:layout_marginLeft="10dp"
+                    android:textAlignment="gravity"
+                    android:gravity="right" />
 
             </RelativeLayout>
 

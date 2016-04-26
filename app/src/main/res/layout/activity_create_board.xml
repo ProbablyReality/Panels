@@ -3,7 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.company.panels.view_panel">
+    tools:context="com.company.panels.view_panel"
+    android:id="@+id/mainRLayout">
 
     <FrameLayout
         android:layout_width="match_parent"
@@ -15,7 +16,7 @@
         <EditText
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/boardTitle"
+            android:id="@+id/editBoard"
             android:hint="Title"
             android:layout_gravity="center_vertical"
             android:textColorHint="#555555"
@@ -46,7 +47,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Allow Posts From Anyone"
+            android:text="Only Approved Submitters Can Post"
             android:id="@+id/textView4"
             android:textSize="18dp"
             android:textColor="#222222"
@@ -60,7 +61,7 @@
         <Switch
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/allowPostFrom"
+            android:id="@+id/restrictPost"
             android:checked="true"
             android:textSize="20sp"
             android:layout_alignParentTop="true"
@@ -97,7 +98,7 @@
         <Switch
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/boardVisibilty"
+            android:id="@+id/isPublic"
             android:checked="true"
             android:textSize="20sp"
             android:layout_alignParentRight="true"

@@ -9,7 +9,6 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 
 public class BoardView extends AppCompatActivity {
-    //Global Variables
     boolean LayoutState = true;
     DBManager mydb;
 
@@ -17,7 +16,6 @@ public class BoardView extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mydb = new DBManager(this);
-        Log.d("Stuff", "3");
 
     }
     @Override
@@ -40,7 +38,7 @@ public class BoardView extends AppCompatActivity {
 
     }
     //Switching to the create panel activity
-    public void CreatePost() {
+    public void toCreatePanel() {
         Intent intent = new Intent(this,CreatePanel.class);
         startActivity(intent);
     }
@@ -50,7 +48,7 @@ public class BoardView extends AppCompatActivity {
         // Handle item selection
         switch (item.getItemId()) {
             case R.id.post:
-                CreatePost();
+                toCreatePanel();
                 return true;
             case R.id.layout:
                 //TODO implement layout switching

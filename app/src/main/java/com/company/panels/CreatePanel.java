@@ -3,24 +3,39 @@ package com.company.panels;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.database.Cursor;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.EditText;
 
 public class CreatePanel extends AppCompatActivity {
     int postCount;
-
+    DBManager mydb;
+    EditText editTitle,editContent,editBoard;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_panel);
         setTitle("Post an Update");
+        mydb = new DBManager(this);
+        Cursor res = mydb.retrieveTemp();
+        Log.d("Cursor count","" + res.getCount());
+        Log.d("Cursor count","" + res.getColumnNames());
+        editTitle = (EditText)findViewById(R.id.editTitle);
+        editBoard = (EditText)findViewById(R.id.editBoard);
+        editContent = (EditText)findViewById(R.id.editContent);
+        while (res.moveToNext()) {
+            editTitle.setText(res.getString(1));
+            editBoard.setText(res.getString(2));
+            editContent.setText(res.getString(3));
+        }
+
+
 
         //Adding back button
         //getActionBar().setDisplayHomeAsUpEnabled(true);
@@ -31,6 +46,12 @@ public class CreatePanel extends AppCompatActivity {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.create_panel_menu, menu);
         return true;
+    }
+    @Override
+    protected void onPause() {
+        super.onPause();
+
+        mydb.storeTemp(editTitle.getText().toString(),editBoard.getText().toString(),editContent.getText().toString());
     }
     @Override
     public void onBackPressed() {
@@ -72,12 +93,13 @@ public class CreatePanel extends AppCompatActivity {
                 .setMessage("Are you sure you want to delete this draft?")
                 .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
-                        toBoardView();
+                        editTitle.setText("");
+                        editBoard.setText("");
+                        editContent.setText("");
                     }
                 })
                 .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
-
                     }
                 })
                 //TODO REDO ALL OF THIS, IT SUCKS AND I WANT MATERIAL DESIGN ASSETS
