@@ -63,41 +63,4 @@ public class BoardView extends AppCompatActivity {
         Intent intent = new Intent(this,ViewPanel.class);
         startActivity(intent);
     }
-
-
-    //BOARD CONSTRUCTOR
-    public class Board {
-        public String name;
-        public String[] owner;
-        public String[] contributor;
-        public String[] member;
-        public Boolean isPublic;
-        public Panel[] panel;
-    }
-    //PANEL CONSTRUCTOR
-    public class Panel {
-        public String board;
-        public int uuid;
-        public int timeStamp;
-        public User author;
-        public String[] views;
-        public String title;
-        public String content;
-        public Comment[] comment;
-    }
-    //USER CONSTRUCTOR
-    public class User {
-        public String id;
-        public String password;
-        public String avatar;
-        public String nick;
-        public String[] boards;
-    }
-    //COMMENT CONSTRUCTOR
-    public class Comment {
-        public User author;
-        public String content;
-        public String timeStamp;
-    }
-
 }

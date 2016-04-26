@@ -15,8 +15,8 @@ public class DBManager extends SQLiteOpenHelper {
     }
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("CREATE TABLE boards (Name VARCHAR(16), IsPublic BOOLEAN, RestrictPosts BOOLEAN, Author VARCHAR(255) DEFAULT 'Unattributed');");
-        db.execSQL("CREATE TABLE panels (PanelID INT, Board VARCHAR(16), Time TIMESTAMP, Author VARCHAR(100), Title VARCHAR(32), Content TEXT, PRIMARY KEY(PanelID));");
+        db.execSQL("CREATE TABLE boards (Name VARCHAR(16), IsPublic BOOLEAN, RestrictPosts BOOLEAN, Author VARCHAR(100) DEFAULT 'Unattributed');");
+        db.execSQL("CREATE TABLE panels (Board VARCHAR(16), Time DATETIME DEFAULT CURRENT_TIMESTAMP, Author VARCHAR(100) DEFAULT 'Unattributed', Title VARCHAR(32), Content TEXT);");
         db.execSQL("CREATE TABLE temp (ID INT, Title VARCHAR(32), Board VARCHAR(16), Content Text);");
         ContentValues contentValues = new ContentValues();
         contentValues.put("ID", "1");
@@ -33,7 +33,7 @@ public class DBManager extends SQLiteOpenHelper {
         onCreate(db);
     }
     //The method for creating a new board
-    public boolean createBoard(String name, Boolean isPublic, Boolean restrictPosts) {
+    public void createBoard(String name, Boolean isPublic, Boolean restrictPosts) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put("Name", name);
@@ -43,13 +43,35 @@ public class DBManager extends SQLiteOpenHelper {
         ContentValues contentValuesB = new ContentValues();
         contentValuesB.put("Board", name);
         db.update("temp", contentValuesB, "ID = ?", new String[]{"1"});
-        return true;
     }
+    //Checking whether or not a board name has been taken
     public Cursor checkBoardAvailable(String title) {
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor res = db.rawQuery("SELECT Name FROM boards WHERE Name ='" + title + "'",null);
         return res;
     }
+    //The method for creating a panel
+    public void createPanel(String board, String author, String title, String content) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("Board", board);
+        contentValues.put("Author", author);
+        contentValues.put("Title", title);
+        contentValues.put("Content", content);
+        db.insert("panels", null, contentValues);
+    }
+    //PANEL CONSTRUCTOR
+    /*public class Panel {
+        public String board;
+        public int uuid;
+        public int timeStamp;
+        public User author;
+        public String[] views;
+        public String title;
+        public String content;
+        public Comment[] comment;
+    }*/
+    //Storing Temp values for panel drafts
     public void storeTemp(String title, String board, String content) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
@@ -57,10 +79,9 @@ public class DBManager extends SQLiteOpenHelper {
         contentValues.put("Title", title);
         contentValues.put("Board", board);
         contentValues.put("Content", content);
-        Log.d("wew", "1");
         db.update("temp", contentValues, "ID = ?", new String[]{"1"});
-        Log.d("wew", "2");
     }
+    //retrieving draft values from temp
     public Cursor retrieveTemp() {
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor res = db.rawQuery("SELECT * FROM temp",null);

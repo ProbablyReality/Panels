@@ -59,8 +59,6 @@ public class CreateBoard extends AppCompatActivity {
                 } else {
                     //tell user board already exists
                     TableExists();
-
-
                     }
             default:
                 return super.onOptionsItemSelected(item);
