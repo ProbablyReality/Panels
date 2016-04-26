@@ -5,6 +5,7 @@ import android.database.Cursor;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -23,8 +24,11 @@ public class CreateBoard extends AppCompatActivity {
         setContentView(R.layout.activity_create_board);
         setTitle("Create a Board");
         mydb = new DBManager(this);
-        //Snackbar.make(null, "A Board With That Name Already Exists", Snackbar.LENGTH_SHORT);
-
+        Cursor res = mydb.retrieveTemp();
+        boardTitle = (EditText)findViewById(R.id.editBoard);
+        while (res.moveToNext()) {
+            boardTitle.setText(res.getString(2));
+        }
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -48,7 +52,6 @@ public class CreateBoard extends AppCompatActivity {
         switch (item.getItemId()) {
             case R.id.create:
                 //Detect if the board already exists before continuing
-                boardTitle = (EditText)findViewById(R.id.editBoard);
                 Cursor boardAvailable = mydb.checkBoardAvailable(boardTitle.getText().toString().toLowerCase());
                 if (boardAvailable.getCount() == 0 ) {
                     isPublic = (Switch)findViewById(R.id.isPublic);

@@ -25,11 +25,9 @@ public class CreatePanel extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_panel);
-        setTitle("Post an Update");
+        setTitle("Create A Post");
         mydb = new DBManager(this);
         Cursor res = mydb.retrieveTemp();
-        Log.d("Cursor count","" + res.getCount());
-        Log.d("Cursor count","" + res.getColumnNames());
         editTitle = (EditText)findViewById(R.id.editTitle);
         editBoard = (EditText)findViewById(R.id.editBoard);
         editContent = (EditText)findViewById(R.id.editContent);
@@ -56,11 +54,6 @@ public class CreatePanel extends AppCompatActivity {
     protected void onPause() {
         super.onPause();
         mydb.storeTemp(editTitle.getText().toString(), editBoard.getText().toString(), editContent.getText().toString());
-    }
-    @Override
-    protected void onStop() {
-        super.onStop();
-        mydb.storeTemp("", "", "");
     }
     @Override
     public void onBackPressed() {

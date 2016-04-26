@@ -10,14 +10,14 @@ import android.util.Log;
 public class DBManager extends SQLiteOpenHelper {
 
     public DBManager(Context context) {
-        super(context, "Data.db", null, 1);
+        super(context, "Data.db", null, 2);
 
     }
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL("CREATE TABLE boards (Name VARCHAR(16), IsPublic BOOLEAN, RestrictPosts BOOLEAN, Author VARCHAR(100) DEFAULT 'Unattributed');");
         db.execSQL("CREATE TABLE panels (Board VARCHAR(16), Time DATETIME DEFAULT CURRENT_TIMESTAMP, Author VARCHAR(100) DEFAULT 'Unattributed', Title VARCHAR(32), Content TEXT);");
-        db.execSQL("CREATE TABLE temp (ID INT, Title VARCHAR(32), Board VARCHAR(16), Content Text);");
+        db.execSQL("CREATE TABLE temp (ID INT, Title VARCHAR(32), Board VARCHAR(16), Content Text, LayoutIsStream BOOLEAN);");
         ContentValues contentValues = new ContentValues();
         contentValues.put("ID", "1");
         contentValues.put("Title", "");
@@ -27,7 +27,7 @@ public class DBManager extends SQLiteOpenHelper {
     }
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        db.execSQL("DROP TABLE IF EXITS boards");
+        db.execSQL("DROP TABLE IF EXISTS boards");
         db.execSQL("DROP TABLE IF EXISTS panels");
         db.execSQL("DROP TABLE IF EXISTS temp");
         onCreate(db);
@@ -60,17 +60,6 @@ public class DBManager extends SQLiteOpenHelper {
         contentValues.put("Content", content);
         db.insert("panels", null, contentValues);
     }
-    //PANEL CONSTRUCTOR
-    /*public class Panel {
-        public String board;
-        public int uuid;
-        public int timeStamp;
-        public User author;
-        public String[] views;
-        public String title;
-        public String content;
-        public Comment[] comment;
-    }*/
     //Storing Temp values for panel drafts
     public void storeTemp(String title, String board, String content) {
         SQLiteDatabase db = this.getWritableDatabase();
@@ -86,6 +75,13 @@ public class DBManager extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor res = db.rawQuery("SELECT * FROM temp",null);
         return res;
+    }
+    public void layoutChange(Boolean isStream) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("ID", 1);
+        contentValues.put("LayoutIsStream", isStream);
+        db.update("temp", contentValues, "ID = ?", new String[]{"1"});
     }
 }
 
