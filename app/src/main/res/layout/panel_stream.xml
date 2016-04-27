@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -10,7 +9,7 @@
     android:clickable="true">
 
     <RelativeLayout
-        android:orientation="horizontal"
+
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:background="@drawable/panel_header_shape"
@@ -18,14 +17,15 @@
         android:elevation="4dp"
         android:id="@+id/header"
         android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp">
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="5dp">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="Update Title Here"
-            android:id="@+id/editTitle"
+            android:id="@+id/panelTitle"
             android:layout_gravity="center_vertical"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
@@ -39,12 +39,12 @@
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:text="PossiblyReality"
-            android:id="@+id/authorName"
+            android:id="@+id/panelAuthor"
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true"
             android:layout_marginRight="10dp"
             android:layout_marginLeft="10dp"
-            android:layout_alignBottom="@+id/editTitle"
+            android:layout_alignBottom="@+id/panelTitle"
             android:textColor="#eeeeee"
             android:textStyle="bold|italic" />
 

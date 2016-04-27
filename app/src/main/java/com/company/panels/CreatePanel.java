@@ -8,7 +8,6 @@ import android.graphics.Color;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -28,7 +27,7 @@ public class CreatePanel extends AppCompatActivity {
         setTitle("Create A Post");
         mydb = new DBManager(this);
         Cursor res = mydb.retrieveTemp();
-        editTitle = (EditText)findViewById(R.id.editTitle);
+        editTitle = (EditText)findViewById(R.id.panelTitle);
         editBoard = (EditText)findViewById(R.id.editBoard);
         editContent = (EditText)findViewById(R.id.editContent);
         while (res.moveToNext()) {
@@ -115,7 +114,7 @@ public class CreatePanel extends AppCompatActivity {
         if (boardAvailable.getCount() > 0 ) {
             String Board = editBoard.getText().toString();
             String Author = "Unattributed";
-            EditText editTitle = (EditText) findViewById(R.id.editTitle);
+            EditText editTitle = (EditText) findViewById(R.id.panelTitle);
             String panelTitle = editTitle.getText().toString();
             EditText editContent = (EditText) findViewById(R.id.editContent);
             String panelContent = editContent.getText().toString();

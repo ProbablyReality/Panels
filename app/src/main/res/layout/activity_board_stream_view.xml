@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+<!--<?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -6,139 +6,20 @@
     android:layout_height="fill_parent"
     tools:context="com.company.panels.BoardView"
     android:background="@color/background"
-    android:id="@+id/mainRLayout">
-
-    <ScrollView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/contentHost" >
+    android:id="@+id/mainRLayout">-->
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        tools:context="com.company.panels.BoardView"
+        android:id="@+id/contentScroller"
+        android:background="@color/background">
 
         <LinearLayout
-            android:orientation="horizontal"
+            android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
 
-            <LinearLayout
-                android:orientation="vertical"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:padding="0dp">
-
-                <include
-                    layout="@layout/panel_stream"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp" />
-
-                <include
-                    layout="@layout/panel_stream"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp" />
-
-                <include
-                    layout="@layout/panel_stream"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp" />
-
-                <include
-                    layout="@layout/panel_stream"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp" />
-
-                <include
-                    layout="@layout/panel_stream"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp" />
-
-                <include
-                    layout="@layout/panel_stream"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp" />
-
-                <include
-                    layout="@layout/panel_stream"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp" />
-
-                <include
-                    layout="@layout/panel_stream"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp" />
-
-                <include
-                    layout="@layout/panel_stream"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp" />
-
-                <include
-                    layout="@layout/panel_stream"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp" />
-
-                <include
-                    layout="@layout/panel_stream"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp" />
-
-                <include
-                    layout="@layout/panel_stream"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp" />
-
-                <include
-                    layout="@layout/panel_stream"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp" />
-
-                <include
-                    layout="@layout/panel_stream"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp" />
-
-                <include
-                    layout="@layout/panel_stream"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp" />
-
-                <include
-                    layout="@layout/panel_stream"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp" />
-
-            </LinearLayout>
-
-        </LinearLayout>
+            android:id="@+id/contentHost"></LinearLayout>
     </ScrollView>
 
-    <!--<FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/fade_out_of_black"
-        android:elevation="4dp">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Currently Viewing All Boards"
-            android:id="@+id/currentBoardDisplay"
-            android:layout_gravity="center"
-            android:textColor="#333333" />
-    </FrameLayout>-->
-
-
-</RelativeLayout>

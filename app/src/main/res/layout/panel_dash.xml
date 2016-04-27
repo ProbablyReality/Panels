@@ -21,7 +21,7 @@
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:text="Update Title Here"
-            android:id="@+id/editTitle"
+            android:id="@+id/panelTitle"
             android:layout_gravity="center_vertical"
             android:elevation="4dp"
             android:textColor="#FFFFFF"
