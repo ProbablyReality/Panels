@@ -10,13 +10,13 @@ import android.util.Log;
 public class DBManager extends SQLiteOpenHelper {
 
     public DBManager(Context context) {
-        super(context, "Data.db", null, 2);
+        super(context, "Data.db", null, 11);
 
     }
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL("CREATE TABLE boards (Name VARCHAR(16), IsPublic BOOLEAN, RestrictPosts BOOLEAN, Author VARCHAR(100) DEFAULT 'Unattributed');");
-        db.execSQL("CREATE TABLE panels (Board VARCHAR(16), Time DATETIME DEFAULT CURRENT_TIMESTAMP, Author VARCHAR(100) DEFAULT 'Unattributed', Title VARCHAR(32), Content TEXT);");
+        db.execSQL("CREATE TABLE panels (_id INTEGER PRIMARY KEY, Board VARCHAR(16), Time DATETIME DEFAULT CURRENT_TIMESTAMP, Author VARCHAR(100) DEFAULT 'Unattributed', Title VARCHAR(32), Content TEXT);");
         db.execSQL("CREATE TABLE temp (ID INT, Title VARCHAR(32), Board VARCHAR(16), Content Text, LayoutIsStream BOOLEAN);");
         ContentValues contentValues = new ContentValues();
         contentValues.put("ID", "1");
@@ -82,6 +82,19 @@ public class DBManager extends SQLiteOpenHelper {
         contentValues.put("ID", 1);
         contentValues.put("LayoutIsStream", isStream);
         db.update("temp", contentValues, "ID = ?", new String[]{"1"});
+
+    }
+    public Cursor getAllRows() {
+        Log.d("FUGINSHET","A");
+        SQLiteDatabase db = this.getWritableDatabase();
+        Log.d("FUGINSHET","B");
+        String[] retrieveRows = new String[] {"_id","Title","Author","Content"};
+        Cursor c = db.query(true,"panels",retrieveRows,null,null,null,null,null,null);
+        if (c != null){
+            c.moveToFirst();
+        }
+        return c;
+        //return db.rawQuery("select * from panels",null);
     }
 }
 

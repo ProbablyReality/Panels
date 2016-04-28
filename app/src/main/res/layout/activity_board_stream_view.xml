@@ -7,19 +7,13 @@
     tools:context="com.company.panels.BoardView"
     android:background="@color/background"
     android:id="@+id/mainRLayout">-->
-    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        tools:context="com.company.panels.BoardView"
-        android:id="@+id/contentScroller"
-        android:background="@color/background">
-
-        <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-
-            android:id="@+id/contentHost"></LinearLayout>
-    </ScrollView>
+<ListView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="fill_parent"
+    android:id="@+id/panelHost"
+    android:footerDividersEnabled="false"
+    android:longClickable="true"
+    android:background="@color/background"
+    android:divider="#00FFFFFF" />
 
