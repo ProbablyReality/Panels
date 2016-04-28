@@ -10,8 +10,8 @@
 
     <RelativeLayout
 
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:background="@drawable/panel_header_shape"
         android:contextClickable="true"
         android:elevation="4dp"
@@ -23,30 +23,35 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="Update Title Here"
             android:id="@+id/panelTitle"
             android:layout_gravity="center_vertical"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_centerVertical="true"
             android:elevation="4dp"
             android:textColor="#FFFFFF"
-            android:textStyle="bold" />
+            android:layout_alignParentTop="false"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="2.5dp"
+            android:layout_marginBottom="2.5dp"
+            android:typeface="sans"
+            android:textSize="20dp" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceSmall"
-            android:text="PossiblyReality"
+            android:text="Unattributed"
             android:id="@+id/panelAuthor"
+            android:textColor="#eeeeee"
+            android:textStyle="italic"
+            android:layout_centerVertical="true"
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true"
-            android:layout_marginRight="10dp"
-            android:layout_marginLeft="10dp"
-            android:layout_alignBottom="@+id/panelTitle"
-            android:textColor="#eeeeee"
-            android:textStyle="bold|italic" />
+            android:layout_marginRight="5dp"
+            android:layout_marginLeft="5dp" />
 
     </RelativeLayout>
 
@@ -61,23 +66,30 @@
         <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+                android:text="Lorem ipsum dolorrem ipsum dolorrem ipsum dolorrem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
             android:textColor="#000000"
             android:background="@drawable/panel_shape"
             android:layout_alignParentTop="true"
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true"
-            android:layout_margin="10dp"
-            android:id="@+id/panelContent" />
+            android:id="@+id/panelContent"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="5dp" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="New Text"
-            android:id="@+id/textView5"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="Posted 5 mins ago"
+            android:id="@+id/dateStamp"
+            android:textColor="#aaaaaa"
+            android:textStyle="italic"
             android:layout_alignParentBottom="true"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true" />
+            android:layout_alignRight="@+id/panelContent"
+            android:layout_alignEnd="@+id/panelContent"
+            android:layout_below="@+id/panelContent"
+            android:maxLines="1" />
 
     </RelativeLayout>
 

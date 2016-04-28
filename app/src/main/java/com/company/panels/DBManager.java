@@ -84,12 +84,10 @@ public class DBManager extends SQLiteOpenHelper {
         db.update("temp", contentValues, "ID = ?", new String[]{"1"});
 
     }
-    public Cursor getAllRows() {
-        Log.d("FUGINSHET","A");
+    public Cursor getAllRows(String sortBY) {
         SQLiteDatabase db = this.getWritableDatabase();
-        Log.d("FUGINSHET","B");
         String[] retrieveRows = new String[] {"_id","Title","Author","Content"};
-        Cursor c = db.query(true,"panels",retrieveRows,null,null,null,null,null,null);
+        Cursor c = db.query(true,"panels",retrieveRows,null,null,null,null,sortBY,null);
         if (c != null){
             c.moveToFirst();
         }
