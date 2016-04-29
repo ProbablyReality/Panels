@@ -4,7 +4,7 @@
     <color name="colorPrimaryDark">#005645</color>
     <color name="colorAccent">#026652</color>
     <color name="colorPanel">#eeeeee</color>
-    <color name="colorHeader">#dddddd</color>
+    <color name="colorHeader">#cccccc</color>
     <color name="panelHeader">#106950</color>
     <color name="background">#dddddd</color>
 </resources>

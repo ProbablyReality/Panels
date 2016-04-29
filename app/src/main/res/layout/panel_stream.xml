@@ -12,13 +12,10 @@
 
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@drawable/panel_header_shape"
+        android:background="@color/colorAccent"
         android:contextClickable="true"
         android:elevation="4dp"
-        android:id="@+id/header"
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp"
-        android:layout_marginTop="5dp">
+        android:id="@+id/header">
 
         <TextView
             android:layout_width="wrap_content"
@@ -27,7 +24,7 @@
             android:id="@+id/panelTitle"
             android:layout_gravity="center_vertical"
             android:elevation="4dp"
-            android:textColor="#FFFFFF"
+            android:textColor="#eeeeee"
             android:layout_alignParentTop="false"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
@@ -45,7 +42,7 @@
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:text="Unattributed"
             android:id="@+id/panelAuthor"
-            android:textColor="#eeeeee"
+            android:textColor="#dddddd"
             android:textStyle="italic"
             android:layout_centerVertical="true"
             android:layout_alignParentRight="true"
@@ -59,15 +56,13 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/header"
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp"
-        android:background="@drawable/panel_shape">
+        android:background="#ffffff">
 
         <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Lorem ipsum dolorrem ipsum dolorrem ipsum dolorrem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-            android:textColor="#000000"
+                android:text="Lorem ipsum dolorrem ipsum dolorrem ipsum dolorrem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+            android:textColor="#111111"
             android:background="@drawable/panel_shape"
             android:layout_alignParentTop="true"
             android:layout_alignParentRight="true"
@@ -81,15 +76,15 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceSmall"
-            android:text="Posted 5 mins ago"
+            android:text="2016-04-20 04:20:00"
             android:id="@+id/dateStamp"
-            android:textColor="#aaaaaa"
+            android:textColor="@color/colorAccent"
             android:textStyle="italic"
-            android:layout_alignParentBottom="true"
+            android:maxLines="1"
             android:layout_alignRight="@+id/panelContent"
             android:layout_alignEnd="@+id/panelContent"
             android:layout_below="@+id/panelContent"
-            android:maxLines="1" />
+            android:layout_marginBottom="2.5dp" />
 
     </RelativeLayout>
 
