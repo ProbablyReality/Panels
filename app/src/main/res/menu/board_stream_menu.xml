@@ -14,12 +14,12 @@
         app:showAsAction="always"
         android:orderInCategory="200"
         />
-    <item
+    <!--<item
     android:id="@+id/layout"
     android:icon="@mipmap/ic_view_stream_white_24dp"
     android:title="Layout"
     app:showAsAction="always"
     android:orderInCategory="300"
-    />
+    />-->
 
 </menu>

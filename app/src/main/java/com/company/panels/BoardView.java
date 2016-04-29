@@ -75,16 +75,17 @@ public class BoardView extends AppCompatActivity {
     //Click events for menu items
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        Log.d("PASSED","Gate 3");
         // Handle item selection
         switch (item.getItemId()) {
             case R.id.post:
                 toCreatePanel();
                 return true;
             case R.id.layout:
-                //TODO implement layout switching
-                invalidateOptionsMenu();
+                //Either fix this, or scrap it
+                //invalidateOptionsMenu();
             case R.id.discover:
-
+                toDiscoverBoards();
             default:
                 return super.onOptionsItemSelected(item);
         }
@@ -93,6 +94,11 @@ public class BoardView extends AppCompatActivity {
     //Switching to the view panel activity
     public void viewPanel() {
         Intent intent = new Intent(this,ViewPanel.class);
+        startActivity(intent);
+    }
+    //Switching to Dicover boards
+    public void toDiscoverBoards() {
+        Intent intent = new Intent(this,DiscoverBoards.class);
         startActivity(intent);
     }
     //Tell the user which board they are currently viewing
@@ -105,9 +111,9 @@ public class BoardView extends AppCompatActivity {
     }
     //Generating panels
     private void loadContent(String sortBY) {
-        Cursor cursor = mydb.getAllRows(sortBY);
-        String[] fromFieldNames = new String[] {"Title","Author","Content"};
-        int[] toViewIDs = new int[] {R.id.panelTitle,R.id.panelAuthor,R.id.panelContent};
+                Cursor cursor = mydb.getAllRows(sortBY);
+        String[] fromFieldNames = new String[] {"Title","Author","Content","Time"};
+        int[] toViewIDs = new int[] {R.id.panelTitle,R.id.panelAuthor,R.id.panelContent,R.id.dateStamp};
         SimpleCursorAdapter myca;
         myca = new SimpleCursorAdapter(getBaseContext(),R.layout.panel_stream,cursor,fromFieldNames,toViewIDs,0);
         ListView myListView = (ListView) findViewById(R.id.panelHost);
@@ -124,17 +130,14 @@ public class BoardView extends AppCompatActivity {
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             public void onItemSelected(AdapterView<?> parent, View view,
                                        int pos, long id) {
-                // An item was selected. You can retrieve the selected item using
-                // parent.getItemAtPosition(pos)
+                //TODO REPLACE THIS WITH A SWITCH
                 if (parent.getItemAtPosition(pos).toString().equals("Newest")) {
                     loadContent("_id DESC");
                 } else if (parent.getItemAtPosition(pos).toString().equals("Oldest")) {
                     loadContent("_id ASC");
                 }
             }
-
             public void onNothingSelected(AdapterView<?> parent) {
-                // Another interface callback
             }
 
         });

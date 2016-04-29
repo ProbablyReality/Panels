@@ -13,6 +13,8 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ListView;
+import android.widget.SimpleCursorAdapter;
 
 public class CreatePanel extends AppCompatActivity {
     DBManager mydb;
@@ -56,7 +58,6 @@ public class CreatePanel extends AppCompatActivity {
     }
     @Override
     public void onBackPressed() {
-        //TODO Save current values in case user returns
         toBoardView();
     }
     public void toBoardView() {
@@ -135,6 +136,8 @@ public class CreatePanel extends AppCompatActivity {
             nonexistantBoard();
         }
     }
+    //
+
     //Snackbars for invalid content
     //TODO integrate these all into a switch statement
     public void nonexistantBoard() {

@@ -10,6 +10,12 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string-array name="sort_panel_by">
+    <item>Newest</item>
+    <item>Oldest</item>
+    </string-array>
+    <string-array name="sort_board_by">
+        <item>Most Posts</item>
+        <item>Most Members</item>
         <item>Newest</item>
         <item>Oldest</item>
     </string-array>
