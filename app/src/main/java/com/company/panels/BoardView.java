@@ -1,33 +1,25 @@
 package com.company.panels;
 
-import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.SimpleCursorAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.AdapterView.OnItemClickListener;
 
-import org.w3c.dom.Text;
-
-import java.util.List;
-
-public class BoardView extends AppCompatActivity {
-    boolean LayoutState = true;
+public class BoardView extends AppCompatActivity{
     DBManager mydb;
     RelativeLayout mainLayout;
     TextView title,author,content;
@@ -36,31 +28,25 @@ public class BoardView extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mydb = new DBManager(this);
-
-
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-            MenuInflater inflater = getMenuInflater();
-
-        if (LayoutState) {
-            inflater.inflate(R.menu.board_stream_menu, menu);
-            setContentView(R.layout.activity_board_stream_view);
-            LayoutState = false;
-            mydb.layoutChange(LayoutState);
-            addSpinner();
-            //currentlyViewing();
-            loadContent("_id DESC");
-        } else {
-            inflater.inflate(R.menu.board_dash_menu, menu);
-            setContentView(R.layout.activity_board_dash_view);
-            LayoutState = true;
-            mydb.layoutChange(LayoutState);
-            //currentlyViewing();
-        }
-
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.board_stream_menu, menu);
+        setContentView(R.layout.activity_board_stream_view);
+        addSpinner();
+        //currentlyViewing();
+        loadContent("_id DESC");
+        ListView listView = (ListView)findViewById(R.id.panelHost);
+        listView.setOnItemClickListener(new OnItemClickListener() {
+            public void onItemClick(AdapterView<?> parent, View view,
+                                    int position, long id) {
+                TextView dateStamp = (TextView)findViewById(R.id.panelID) ;
+                toViewPanel(dateStamp.getText().toString());
+            }
+        });
+        Log.d("1234567","6");
         return true;
-
     }
     //Switching layouts
     @Override
@@ -81,7 +67,7 @@ public class BoardView extends AppCompatActivity {
             case R.id.post:
                 toCreatePanel();
                 return true;
-            case R.id.layout:
+            //case R.id.layout:
                 //Either fix this, or scrap it
                 //invalidateOptionsMenu();
             case R.id.discover:
@@ -92,8 +78,9 @@ public class BoardView extends AppCompatActivity {
     }
 
     //Switching to the view panel activity
-    public void viewPanel() {
+    public void toViewPanel(String panelID) {
         Intent intent = new Intent(this,ViewPanel.class);
+        intent.putExtra("panelID",panelID);
         startActivity(intent);
     }
     //Switching to Dicover boards
@@ -111,9 +98,9 @@ public class BoardView extends AppCompatActivity {
     }
     //Generating panels
     private void loadContent(String sortBY) {
-                Cursor cursor = mydb.getAllRows(sortBY);
-        String[] fromFieldNames = new String[] {"Title","Author","Content","Time"};
-        int[] toViewIDs = new int[] {R.id.panelTitle,R.id.panelAuthor,R.id.panelContent,R.id.dateStamp};
+                Cursor cursor = mydb.getAllPanels(sortBY);
+        String[] fromFieldNames = new String[] {"_id","Title","Author","Content","Time","Comments"};
+        int[] toViewIDs = new int[] {R.id.panelID,R.id.panelTitle,R.id.panelAuthor,R.id.panelContent,R.id.dateStamp,R.id.commentCount};
         SimpleCursorAdapter myca;
         myca = new SimpleCursorAdapter(getBaseContext(),R.layout.panel_stream,cursor,fromFieldNames,toViewIDs,0);
         ListView myListView = (ListView) findViewById(R.id.panelHost);
@@ -137,6 +124,7 @@ public class BoardView extends AppCompatActivity {
                     loadContent("_id ASC");
                 }
             }
+
             public void onNothingSelected(AdapterView<?> parent) {
             }
 

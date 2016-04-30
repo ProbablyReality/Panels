@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     tools:context="com.company.panels.BoardView"
@@ -16,8 +15,6 @@
         android:background="@color/colorPanel"
         android:id="@+id/relativeLayout"
         android:layout_alignParentBottom="false"
-        android:layout_alignParentLeft="false"
-        android:layout_alignParentStart="true"
         android:layout_marginTop="1dp"
         android:layout_below="@+id/titleFrame" >
 
@@ -49,9 +46,11 @@
         android:layout_height="fill_parent"
         android:id="@+id/panelHost"
         android:footerDividersEnabled="false"
-        android:longClickable="true"
         android:background="@color/background"
-        android:layout_below="@+id/relativeLayout" />
+        android:layout_below="@+id/relativeLayout"
+        android:descendantFocusability="blocksDescendants"
+        android:elevation="4dp"
+        android:divider="#00FFFFFF" />
 
     <TextView
         android:layout_width="wrap_content"

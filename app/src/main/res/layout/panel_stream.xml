@@ -3,19 +3,19 @@
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-    android:minHeight="?attr/actionBarSize"
         android:layout_margin="0dp"
-        android:elevation="4dp"
-    android:clickable="true">
+        android:elevation="4dp">
 
-    <RelativeLayout
+        <RelativeLayout
 
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@color/colorAccent"
-        android:contextClickable="true"
+        android:background="@drawable/panel_header_shape"
         android:elevation="4dp"
-        android:id="@+id/header">
+        android:id="@+id/header"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="5dp">
 
         <TextView
             android:layout_width="wrap_content"
@@ -31,8 +31,8 @@
             android:layout_centerVertical="true"
             android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp"
-            android:layout_marginTop="2.5dp"
-            android:layout_marginBottom="2.5dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
             android:typeface="sans"
             android:textSize="20dp" />
 
@@ -56,21 +56,57 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/header"
-        android:background="#ffffff">
+        android:background="#ffffff"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:id="@+id/relativeLayout2">
 
         <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Lorem ipsum dolorrem ipsum dolorrem ipsum dolorrem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
             android:textColor="#111111"
             android:background="@drawable/panel_shape"
             android:layout_alignParentTop="true"
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true"
             android:id="@+id/panelContent"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="5dp"
-            android:layout_marginTop="5dp" />
+            android:layout_margin="5dp"
+            android:text="Content" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:background="@drawable/panel_footer_shape"
+        android:elevation="4dp"
+        android:layout_below="@+id/relativeLayout2"
+        android:layout_marginRight="5dp"
+        android:layout_marginLeft="5dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="0"
+            android:id="@+id/commentCount"
+            android:textColor="#000000"
+            android:textStyle="italic"
+            android:maxLines="1"
+            android:layout_toLeftOf="@+id/imageButton"
+            android:layout_toStartOf="@+id/imageButton"
+            android:layout_centerVertical="true" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/imageButton"
+            android:background="@mipmap/ic_comment_black_24dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_alignParentRight="true"
+            android:contentDescription="comment" />-->
 
         <TextView
             android:layout_width="wrap_content"
@@ -81,10 +117,18 @@
             android:textColor="@color/colorAccent"
             android:textStyle="italic"
             android:maxLines="1"
-            android:layout_alignRight="@+id/panelContent"
-            android:layout_alignEnd="@+id/panelContent"
-            android:layout_below="@+id/panelContent"
-            android:layout_marginBottom="2.5dp" />
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_margin="5dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:id="@+id/panelID"
+            android:textColor="#00FFFFFF"
+            android:textStyle="italic"
+            android:maxLines="1" />
 
     </RelativeLayout>
 

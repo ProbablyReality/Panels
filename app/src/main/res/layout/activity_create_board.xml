@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.company.panels.view_panel"
     android:id="@+id/mainRLayout">
 
     <FrameLayout
@@ -16,7 +14,7 @@
         <EditText
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/editBoard"
+            android:id="@+id/panelTitle"
             android:hint="Title"
             android:layout_gravity="center_vertical"
             android:textColorHint="#555555"
