@@ -59,8 +59,6 @@ public class BoardView extends AppCompatActivity{
     //Click events for menu items
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        Log.d("PASSED","Gate 3");
-        // Handle item selection
         switch (item.getItemId()) {
             case R.id.post:
                 toCreatePanel();

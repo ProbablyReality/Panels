@@ -18,14 +18,18 @@
         <activity
             android:name=".CreatePanel"
             android:windowSoftInputMode="adjustResize" />
-        <activity android:name=".ViewPanel" />
+        <activity
+            android:name=".ViewPanel" />
         <activity
             android:name=".CreateBoard"
             android:windowSoftInputMode="adjustResize" />
-
-        <android.database.sqlite android:name="ManageSQL" />
-
-        <activity android:name=".DiscoverBoards"></activity>
+        <android.database.sqlite
+            android:name="ManageSQL" />
+        <activity
+            android:name=".DiscoverBoards" />
+        <activity
+            android:name=".CreateComment"
+            android:windowSoftInputMode="adjustResize"></activity>
     </application>
 
 </manifest>

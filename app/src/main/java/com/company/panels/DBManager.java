@@ -64,7 +64,6 @@ public class DBManager extends SQLiteOpenHelper {
         db.execSQL("UPDATE boards SET Panels = Panels + 1 WHERE NAME = '" + board + "'");
         db.insert("panels", null, contentValues);
     }
-    // TODO THIS IS UNFINISHED! DO THIS IMMEDIATELY
     // The method for creating a comment
     public void createComment(String panel, String author, String content) {
         SQLiteDatabase db = this.getWritableDatabase();
@@ -72,7 +71,7 @@ public class DBManager extends SQLiteOpenHelper {
         contentValues.put("PanelID", panel);
         contentValues.put("Author", author);
         contentValues.put("Content", content);
-        db.execSQL("UPDATE panels SET Comments = Comments + 1 WHERE PanelID = '" + panel + "'");
+        db.execSQL("UPDATE panels SET Comments = Comments + 1 WHERE _id = '" + panel + "'");
         db.insert("comments", null, contentValues);
     }
     //Storing Temp values for panel drafts
@@ -109,6 +108,16 @@ public class DBManager extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         String[] retrieveRows = new String[] {"_id","Name","Panels","Members","Time"};
         Cursor c = db.query(true,"boards",retrieveRows,null,null,null,null,sortBY,null);
+        if (c != null){
+            c.moveToFirst();
+        }
+        return c;
+        //return db.rawQuery("select * from panels",null);
+    }
+    public Cursor getComments(String sortBY,String panelID) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        String[] retrieveRows = new String[] {"_id","Content","Author","Time"};
+        Cursor c = db.query(true,"comments",retrieveRows,"PanelID = '"+panelID+"'",null,null,null,sortBY,null);
         if (c != null){
             c.moveToFirst();
         }

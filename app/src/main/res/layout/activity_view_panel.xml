@@ -1,139 +1,149 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/background">
 
     <ScrollView
         android:layout_width="wrap_content"
-        android:layout_height="fill_parent"
-        android:id="@+id/contentContainer"
-        android:layout_alignBottom="@+id/space"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true">
+        android:layout_height="wrap_content"
+        android:id="@+id/scrollView" >
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="fill_parent">
+            android:layout_height="wrap_content">
 
-            <RelativeLayout
-                android:orientation="horizontal"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/colorPanel"
-                android:contextClickable="true"
-                android:elevation="4dp"
-                android:id="@+id/titleFrame"
-                android:layout_alignParentTop="true"
-                android:layout_centerHorizontal="true">
+                android:layout_height="match_parent"
+                android:orientation="vertical">
 
-                <TextView
-                    android:layout_width="wrap_content"
+                <RelativeLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceSmall"
-                    android:text="Unattributed"
-                    android:id="@+id/panelAuthor"
-                    android:layout_centerVertical="true"
+                    android:background="@color/colorPanel"
+                    android:contextClickable="true"
+                    android:elevation="4dp"
+                    android:id="@+id/titleFrame"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceSmall"
+                        android:text="Unattributed"
+                        android:id="@+id/panelAuthor"
+                        android:layout_centerVertical="true"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentStart="true"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginBottom="5dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceSmall"
+                        android:text="2016-04-20 04:20:00"
+                        android:id="@+id/panelTime"
+                        android:textColor="@color/colorAccent"
+                        android:textStyle="italic"
+                        android:maxLines="1"
+                        android:layout_centerVertical="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginBottom="5dp" />
+                </RelativeLayout>
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_below="@+id/titleFrame"
+                    android:id="@+id/frameLayout2"
+                    android:background="#ffffff">
+
+                    <TextView
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Content"
+                        android:id="@+id/panelContent"
+                        android:layout_below="@+id/titleFrame"
+                        android:layout_centerHorizontal="true"
+                        android:layout_margin="10dp" />
+
+                </FrameLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="fill_parent"
+                    android:id="@+id/commentContainer"
+                    android:layout_below="@+id/frameLayout2"
                     android:layout_alignParentLeft="true"
-                    android:layout_alignParentStart="true"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginBottom="5dp" />
+                    android:layout_alignParentStart="true">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceSmall"
-                    android:text="2016-04-20 04:20:00"
-                    android:id="@+id/panelTime"
-                    android:textColor="@color/colorAccent"
-                    android:textStyle="italic"
-                    android:maxLines="1"
-                    android:layout_centerVertical="true"
-                    android:layout_alignParentRight="true"
-                    android:layout_alignParentEnd="true"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginBottom="5dp" />
-            </RelativeLayout>
+                    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                        android:orientation="vertical"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentStart="true">
 
-            <TextView
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:text="Content"
-                android:id="@+id/panelContent"
-                android:layout_below="@+id/titleFrame"
-                android:layout_centerHorizontal="true"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginTop="10dp" />
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:elevation="4dp"
+                            android:background="@color/colorPanel"
+                            android:id="@+id/relativeLayout3"
+                            android:layout_alignParentBottom="false"
+                            android:layout_alignParentLeft="false"
+                            android:layout_alignParentStart="true"
+                            android:layout_below="@+id/titleFrame" >
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Sorting Comments By"
+                                android:id="@+id/textView9"
+                                android:textSize="18dp"
+                                android:textColor="#222222"
+                                android:gravity="center_vertical"
+                                android:layout_margin="10dp"
+                                android:layout_centerVertical="true" />
+
+                            <Spinner
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:id="@+id/spinner2"
+                                android:spinnerMode="dropdown"
+                                android:layout_alignParentTop="false"
+                                android:layout_alignParentRight="true"
+                                android:layout_centerVertical="true"
+                                android:layout_toRightOf="@+id/textView9"
+                                android:layout_toEndOf="@+id/textView9" />
+                        </RelativeLayout>
+
+                    </LinearLayout>
+                </RelativeLayout>
+
+            </LinearLayout>
+
         </RelativeLayout>
     </ScrollView>
 
-    <Space
-        android:layout_width="fill_parent"
-        android:layout_height="10dp"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true"
-        android:id="@+id/space" />
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_alignTop="@+id/space"
+    <ListView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/commentHost"
+        android:choiceMode="none"
+        android:layout_below="@+id/scrollView"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:id="@+id/commentContainer">
-
-        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-            android:orientation="vertical"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" >
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:elevation="4dp"
-                android:background="@color/colorPanel"
-                android:id="@+id/relativeLayout3"
-                android:layout_alignParentBottom="false"
-                android:layout_alignParentLeft="false"
-                android:layout_alignParentStart="true"
-                android:layout_marginTop="1dp"
-                android:layout_below="@+id/titleFrame" >
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Sorting By"
-                    android:id="@+id/textView9"
-                    android:textSize="18dp"
-                    android:textColor="#222222"
-                    android:gravity="center_vertical"
-                    android:layout_margin="10dp"
-                    android:layout_centerVertical="true" />
-
-                <Spinner
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/spinner2"
-                    android:layout_centerVertical="true"
-                    android:layout_alignParentRight="true"
-                    android:layout_alignParentEnd="true"
-                    android:spinnerMode="dropdown" />
-            </RelativeLayout>
-
-            <ListView xmlns:android="http://schemas.android.com/apk/res/android"
-                xmlns:tools="http://schemas.android.com/tools"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:id="@+id/listView2"
-                android:footerDividersEnabled="false"
-                android:longClickable="true"
-                android:background="@color/background"
-                android:layout_below="@+id/relativeLayout" />
-        </LinearLayout>
-    </RelativeLayout>
+        android:layout_alignParentStart="true" />
 
 </RelativeLayout>
