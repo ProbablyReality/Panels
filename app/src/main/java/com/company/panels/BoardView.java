@@ -22,7 +22,6 @@ import android.widget.AdapterView.OnItemClickListener;
 public class BoardView extends AppCompatActivity{
     DBManager mydb;
     RelativeLayout mainLayout;
-    TextView title,author,content;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,11 +40,10 @@ public class BoardView extends AppCompatActivity{
         listView.setOnItemClickListener(new OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
-                TextView dateStamp = (TextView)findViewById(R.id.panelID) ;
-                toViewPanel(dateStamp.getText().toString());
+                TextView panelID = (TextView)view.findViewById(R.id.panelID) ;
+                toViewPanel(panelID.getText().toString());
             }
         });
-        Log.d("1234567","6");
         return true;
     }
     //Switching layouts

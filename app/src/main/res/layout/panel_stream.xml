@@ -59,7 +59,8 @@
         android:background="#ffffff"
         android:layout_marginLeft="5dp"
         android:layout_marginRight="5dp"
-        android:id="@+id/relativeLayout2">
+        android:id="@+id/relativeLayout2"
+        android:layout_alignParentBottom="false">
 
         <TextView
                 android:layout_width="match_parent"
@@ -82,7 +83,8 @@
         android:elevation="4dp"
         android:layout_below="@+id/relativeLayout2"
         android:layout_marginRight="5dp"
-        android:layout_marginLeft="5dp">
+        android:layout_marginLeft="5dp"
+        android:layout_alignParentBottom="true">
 
         <TextView
             android:layout_width="wrap_content"
