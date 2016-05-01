@@ -111,7 +111,7 @@ public class CreatePanel extends AppCompatActivity {
         EditText editBoard = (EditText)findViewById(R.id.editBoard);
         Cursor boardAvailable = mydb.checkBoardAvailable(editBoard.getText().toString().toLowerCase());
         if (boardAvailable.getCount() > 0 ) {
-            String Board = editBoard.getText().toString();
+            String Board = editBoard.getText().toString().toLowerCase();
             String Author = "Unattributed";
             EditText editTitle = (EditText) findViewById(R.id.panelTitle);
             String panelTitle = editTitle.getText().toString();

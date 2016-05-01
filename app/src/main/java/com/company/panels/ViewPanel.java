@@ -21,7 +21,9 @@ public class
 ViewPanel extends AppCompatActivity {
     DBManager mydb;
     TextView panelTime,panelAuthor,panelContent;
-    String thisID;
+    String thisID,board;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,13 +54,17 @@ ViewPanel extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.post:
-                deletePanel();
             case R.id.comment:
                 toCreateComment();
+            case R.id.delete:
+                deletePanel();
             default:
                 return super.onOptionsItemSelected(item);
         }
+    }
+    @Override
+    public void onBackPressed() {
+        toBoardView();
     }
     private void loadComments(String sortBy) {
         Cursor c = mydb.getComments(sortBy,thisID);
@@ -70,11 +76,22 @@ ViewPanel extends AppCompatActivity {
         myListView.setAdapter(myca);
     }
     private void deletePanel() {
+        Cursor c = mydb.getBoard(thisID);
+        while (c.moveToNext()) {
+            Log.d("LOGGGGGGG",c.getString(0));
+            board = (c.getString(0));
+        }
+        mydb.deletePanel(thisID,board);
+        toBoardView();
     }
     public void toCreateComment() {
         Intent intent = new Intent(this,CreateComment.class);
         intent.putExtra("panelID",thisID);
         startActivity(intent);
 
+    }
+    public void toBoardView() {
+        Intent intent = new Intent(this,BoardView.class);
+        startActivity(intent);
     }
 }

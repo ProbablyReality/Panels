@@ -124,6 +124,17 @@ public class DBManager extends SQLiteOpenHelper {
         return c;
         //return db.rawQuery("select * from panels",null);
     }
+    //The method for deleting a panel
+    public void deletePanel(String panelID,String board) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.execSQL("DELETE FROM comments WHERE PanelID = '" + panelID + "'");
+        db.execSQL("DELETE FROM panels WHERE _id = '" + panelID + "'");
+        db.execSQL("UPDATE boards SET Panels = Panels - 1 WHERE NAME = '" + board + "'");
+    }
+    public Cursor getBoard(String panelID) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        return db.rawQuery("SELECT Board FROM panels WHERE _id ='"+ panelID +"'",null);
+    }
 }
 
 
