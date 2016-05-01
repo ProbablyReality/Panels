@@ -8,58 +8,56 @@
     android:id="@+id/mainLayout"
     android:orientation="vertical">
 
-    <RelativeLayout
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:elevation="4dp"
-        android:background="@color/colorPanel"
-        android:id="@+id/relativeLayout"
-        android:layout_alignParentBottom="false"
-        android:layout_marginTop="1dp"
-        android:layout_below="@+id/titleFrame" >
+        android:layout_height="wrap_content">
 
-        <TextView
-            android:layout_width="wrap_content"
+        <RelativeLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Sorting By"
-            android:id="@+id/textView"
-            android:textSize="18dp"
-            android:textColor="#222222"
-            android:gravity="center_vertical"
-            android:layout_margin="10dp"
-            android:layout_centerVertical="true" />
+            android:elevation="4dp"
+            android:background="@color/colorPanel"
+            android:id="@+id/relativeLayout"
+            android:layout_alignParentBottom="false"
+            android:layout_marginTop="1dp"
+            android:layout_below="@+id/titleFrame" >
 
-        <Spinner
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Sorting By"
+                android:id="@+id/textView"
+                android:textSize="18dp"
+                android:textColor="#222222"
+                android:gravity="center_vertical"
+                android:layout_margin="10dp"
+                android:layout_centerVertical="true" />
+
+            <Spinner
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/sortBy"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:spinnerMode="dropdown" />
+
+        </RelativeLayout>
+
+        <ListView xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:tools="http://schemas.android.com/tools"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/sortBy"
-            android:layout_centerVertical="true"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true"
-            android:spinnerMode="dropdown" />
+            android:layout_height="match_parent"
+            android:id="@+id/panelHost"
+            android:footerDividersEnabled="true"
+            android:background="@color/background"
+            android:layout_below="@+id/relativeLayout"
+            android:descendantFocusability="blocksDescendants"
+            android:elevation="4dp"
+            android:divider="#00FFFFFF" />
 
-    </RelativeLayout>
-
-    <ListView xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:layout_width="wrap_content"
-        android:layout_height="fill_parent"
-        android:id="@+id/panelHost"
-        android:footerDividersEnabled="true"
-        android:background="@color/background"
-        android:layout_below="@+id/relativeLayout"
-        android:descendantFocusability="blocksDescendants"
-        android:elevation="4dp"
-        android:divider="#00FFFFFF" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="End of Content"
-        android:id="@+id/textView8"
-        android:layout_gravity="center"
-        android:layout_margin="10dp" />
+    </LinearLayout>
 
 </LinearLayout>
 

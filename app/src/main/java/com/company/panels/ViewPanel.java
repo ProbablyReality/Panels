@@ -1,11 +1,13 @@
 package com.company.panels;
 
+import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -49,6 +51,9 @@ ViewPanel extends AppCompatActivity {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.view_panel_menu, menu);
         loadComments("_id DESC");
+        ListView listView = (ListView)findViewById(R.id.commentHost);
+        View footerView = ((LayoutInflater) getApplicationContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE)).inflate(R.layout.list_footer, null, false);
+        listView.addFooterView(footerView);
         return true;
     }
     @Override

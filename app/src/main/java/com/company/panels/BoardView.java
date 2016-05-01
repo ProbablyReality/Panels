@@ -1,11 +1,13 @@
 package com.company.panels;
 
+import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -19,14 +21,18 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.AdapterView.OnItemClickListener;
 
+import java.util.List;
+
 public class BoardView extends AppCompatActivity{
     DBManager mydb;
     RelativeLayout mainLayout;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mydb = new DBManager(this);
+
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -44,6 +50,9 @@ public class BoardView extends AppCompatActivity{
                 toViewPanel(panelID.getText().toString());
             }
         });
+        //Adding a footer, It seems to duplicate this if inside loadCoantent for whatever reason
+        View footerView = ((LayoutInflater) getApplicationContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE)).inflate(R.layout.list_footer, null, false);
+        listView.addFooterView(footerView);
         return true;
     }
     //Switching layouts
@@ -101,6 +110,7 @@ public class BoardView extends AppCompatActivity{
         myca = new SimpleCursorAdapter(getBaseContext(),R.layout.panel_stream,cursor,fromFieldNames,toViewIDs,0);
         ListView myListView = (ListView) findViewById(R.id.panelHost);
         myListView.setAdapter(myca);
+
 
     }
     //Adding the sort by spinner

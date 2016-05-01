@@ -48,7 +48,7 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:id="@+id/panelHost"
+        android:id="@+id/boardHost"
         android:footerDividersEnabled="false"
         android:longClickable="true"
         android:background="@color/background"

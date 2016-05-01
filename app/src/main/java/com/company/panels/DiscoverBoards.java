@@ -1,15 +1,19 @@
 package com.company.panels;
 
+import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 import android.widget.Spinner;
+
+import java.util.List;
 
 public class DiscoverBoards extends AppCompatActivity {
     DBManager mydb;
@@ -22,6 +26,9 @@ public class DiscoverBoards extends AppCompatActivity {
         setTitle("Discover Boards");
         addSpinner();
         loadContent("Panels DESC");
+        ListView listView = (ListView)findViewById(R.id.boardHost);
+        View footerView = ((LayoutInflater) getApplicationContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE)).inflate(R.layout.list_footer, null, false);
+        listView.addFooterView(footerView);
     }
     //@Override
     //public boolean onCreateOptionsMenu(Menu menu) {
@@ -45,7 +52,7 @@ public class DiscoverBoards extends AppCompatActivity {
         int[] toViewIDs = new int[] {R.id.boardTitle,R.id.panelCount,R.id.memberCount,R.id.boardTime};
         SimpleCursorAdapter myca;
         myca = new SimpleCursorAdapter(getBaseContext(),R.layout.board_stream,cursor,fromFieldNames,toViewIDs,0);
-        ListView myListView = (ListView) findViewById(R.id.panelHost);
+        ListView myListView = (ListView) findViewById(R.id.boardHost);
         myListView.setAdapter(myca);
 
     }
