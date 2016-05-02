@@ -156,4 +156,10 @@ public class CreatePanel extends AppCompatActivity {
                 .show();
     }
     //End snackbars
+    //Uploading an image to imgur
+    public void selectImage(View v) {
+        Intent i = new Intent(Intent.ACTION_PICK,
+                android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+        startActivityForResult(i, 0);
+    }
 }

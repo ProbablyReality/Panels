@@ -9,7 +9,9 @@
         android:layout_width="wrap_content"
         android:layout_height="fill_parent"
         android:id="@+id/scrollView2"
-        android:layout_alignParentBottom="false">
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -44,32 +46,6 @@
             </FrameLayout>
 
 
-            <FrameLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/contentFrame"
-                android:background="#ffffff"
-                android:layout_below="@+id/postToFrame">
-
-                <EditText
-                    android:layout_width="fill_parent"
-                    android:layout_height="match_parent"
-                    android:id="@+id/editContent"
-                    android:hint="Content"
-                    android:layout_gravity="center_horizontal|top"
-                    android:layout_below="@+id/frameLayout"
-                    android:layout_centerHorizontal="true"
-                    android:textColorHint="#666666"
-                    android:typeface="sans"
-                    android:gravity="top"
-                    android:background="#ffffff"
-                    android:nestedScrollingEnabled="false"
-                    android:singleLine="false"
-                    android:textColor="#000000"
-                    android:layout_margin="10dp"
-                    android:maxLength="2048" />
-            </FrameLayout>
-
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -80,13 +56,13 @@
                 android:layout_alignParentLeft="false"
                 android:layout_alignParentStart="true"
                 android:layout_marginTop="1dp"
-                android:layout_below="@+id/titleFrame">
+                android:layout_below="@+id/relativeLayout5" >
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Posting To"
-                    android:id="@+id/textView6"
+                    android:id="@+id/textView3"
                     android:textSize="18dp"
                     android:textColor="#222222"
                     android:gravity="center_vertical"
@@ -114,7 +90,71 @@
                     android:layout_marginLeft="10dp"
                     android:textAlignment="gravity"
                     android:gravity="right" />
+            </RelativeLayout>
 
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/contentFrame"
+                android:background="#ffffff"
+                android:layout_below="@+id/postToFrame">
+
+                <EditText
+                    android:layout_width="fill_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/editContent"
+                    android:hint="Content"
+                    android:layout_gravity="center_horizontal|top"
+                    android:layout_below="@+id/frameLayout"
+                    android:layout_centerHorizontal="true"
+                    android:textColorHint="#666666"
+                    android:typeface="sans"
+                    android:gravity="top"
+                    android:background="#ffffff"
+                    android:nestedScrollingEnabled="false"
+                    android:singleLine="false"
+                    android:textColor="#000000"
+                    android:layout_margin="10dp"
+                    android:maxLength="2048" />
+
+            </FrameLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/relativeLayout5"
+                android:elevation="4dp"
+                android:layout_below="@+id/titleFrame"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_marginTop="1dp"
+                android:background="@color/colorPanel" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Post Anonymously"
+                    android:id="@+id/textView5"
+                    android:textSize="18dp"
+                    android:textColor="#222222"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_centerVertical="true" />
+
+                <Switch
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/anon"
+                    android:checked="false"
+                    android:textSize="20sp"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_margin="10dp"
+                    android:textColor="#000000" />
             </RelativeLayout>
 
         </RelativeLayout>

@@ -1,6 +1,8 @@
 package com.company.panels;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.support.design.widget.Snackbar;
@@ -14,6 +16,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.SimpleCursorAdapter;
@@ -32,6 +35,10 @@ public class BoardView extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mydb = new DBManager(this);
+        //test if userid exists
+        if (mydb.existingUser()) {
+            chooseUsername();
+        }
 
     }
     @Override
@@ -135,5 +142,27 @@ public class BoardView extends AppCompatActivity{
             }
 
         });
+    }
+    public void chooseUsername() {
+        final EditText input = new EditText(BoardView.this);
+        new AlertDialog.Builder(this)
+                .setTitle("Choose Username")
+                .setMessage("Please enter a username. You will still have the option to post anonymously")
+                .setView(input)
+                .setCancelable(false)
+                .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        Log.d("USERNAME",input.getText().toString());
+                        if (mydb.checkUserAvailable(input.getText().toString())) {
+                            Log.d("USERNAME","1");
+                            mydb.createUser((input.getText().toString()));
+                            Log.d("USERNAME","2");
+                        } else {
+                            Log.d("USERNAME","EXIT");
+                        }
+                    }
+                })
+                //TODO REDO ALL OF THIS, IT SUCKS AND I WANT MATERIAL DESIGN ASSETS
+                .show();
     }
 }

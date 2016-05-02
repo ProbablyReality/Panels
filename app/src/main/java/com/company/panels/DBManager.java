@@ -10,7 +10,7 @@ import android.util.Log;
 public class DBManager extends SQLiteOpenHelper {
 
     public DBManager(Context context) {
-        super(context, "Data.db", null, 17);
+        super(context, "Data.db", null, 18);
 
     }
     @Override
@@ -18,6 +18,8 @@ public class DBManager extends SQLiteOpenHelper {
         db.execSQL("CREATE TABLE boards (_id INTEGER PRIMARY KEY, Name VARCHAR(16), IsPublic BOOLEAN, RestrictPosts BOOLEAN, Owner VARCHAR(100) DEFAULT 'Unattributed', Panels INT DEFAULT 0, Members INT DEFAULT 1, Time DATETIME DEFAULT CURRENT_TIMESTAMP);");
         db.execSQL("CREATE TABLE panels (_id INTEGER PRIMARY KEY, Board VARCHAR(16), Time DATETIME DEFAULT CURRENT_TIMESTAMP, Author VARCHAR(100) DEFAULT 'Unattributed', Title VARCHAR(32), Content TEXT, Comments INT);");
         db.execSQL("CREATE TABLE comments (_id INTEGER PRIMARY KEY, PanelID INT, Time DATETIME DEFAULT CURRENT_TIMESTAMP, Author VARCHAR(100) DEFAULT 'Unattributed', Content TEXT);");
+        db.execSQL("CREATE TABLE users (_id INTEGER PRIMARY KEY, Name VARCHAR(16), Time DATETIME DEFAULT CURRENT_TIMESTAMP );");
+        db.execSQL("CREATE TABLE user (UserID INTEGER);");
         db.execSQL("CREATE TABLE temp (ID INT, Title VARCHAR(32), Board VARCHAR(16), Content Text, LayoutIsStream BOOLEAN);");
         ContentValues contentValues = new ContentValues();
         contentValues.put("ID", "1");
@@ -25,6 +27,7 @@ public class DBManager extends SQLiteOpenHelper {
         contentValues.put("Board", "");
         contentValues.put("Content", "");
         db.insert("temp", null, contentValues);
+        db.execSQL("INSERT INTO user VALUES (-1)");
     }
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
@@ -32,6 +35,8 @@ public class DBManager extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS panels");
         db.execSQL("DROP TABLE IF EXISTS comments");
         db.execSQL("DROP TABLE IF EXISTS temp");
+        db.execSQL("DROP TABLE IF EXISTS users");
+        db.execSQL("DROP TABLE IF EXISTS user");
         onCreate(db);
     }
     //The method for creating a new board
@@ -135,6 +140,41 @@ public class DBManager extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         return db.rawQuery("SELECT Board FROM panels WHERE _id ='"+ panelID +"'",null);
     }
+    public boolean existingUser() {
+        SQLiteDatabase db = this.getWritableDatabase();
+        String id;
+        Cursor c = db.rawQuery("SELECT UserID FROM user",null);
+        c.moveToFirst();
+        id = c.getString(0);
+        Log.d("USERNAME",id);
+        if (Integer.parseInt(id) < 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    //Checking whether or not a board name has been taken
+    public boolean checkUserAvailable(String title) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor c = db.rawQuery("SELECT Name FROM users WHERE Name ='" + title + "'",null);
+        if (c != null) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    //The method for creating a new board
+    public void createUser(String name) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("Name", name);
+        db.insert("users", null, contentValues);
+        Cursor c = db.rawQuery("SELECT _id FROM users WHERE Name ='" +name + "'",null);
+        c.moveToFirst();
+        db.execSQL("UPDATE user SET UserID=" + c.getString(0) + " WHERE UserID=-1");
+
+    }
+
 }
 
 
