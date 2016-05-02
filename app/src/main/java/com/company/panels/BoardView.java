@@ -37,7 +37,7 @@ public class BoardView extends AppCompatActivity{
         mydb = new DBManager(this);
         //test if userid exists
         if (mydb.existingUser()) {
-            chooseUsername();
+            chooseUsername(false);
         }
 
     }
@@ -143,26 +143,29 @@ public class BoardView extends AppCompatActivity{
 
         });
     }
-    public void chooseUsername() {
+    public void chooseUsername(boolean incorrect) {
         final EditText input = new EditText(BoardView.this);
+        String message = "Please enter a username. You will still have the option to post anonymously";
+        if (incorrect)  {
+            message = "That username is already taken.";
+        }
         new AlertDialog.Builder(this)
                 .setTitle("Choose Username")
-                .setMessage("Please enter a username. You will still have the option to post anonymously")
+                .setMessage(message)
                 .setView(input)
                 .setCancelable(false)
                 .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
-                        Log.d("USERNAME",input.getText().toString());
                         if (mydb.checkUserAvailable(input.getText().toString())) {
                             Log.d("USERNAME","1");
                             mydb.createUser((input.getText().toString()));
                             Log.d("USERNAME","2");
                         } else {
                             Log.d("USERNAME","EXIT");
+                            chooseUsername(true);
                         }
                     }
                 })
-                //TODO REDO ALL OF THIS, IT SUCKS AND I WANT MATERIAL DESIGN ASSETS
                 .show();
     }
 }

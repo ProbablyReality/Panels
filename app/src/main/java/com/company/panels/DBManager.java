@@ -150,17 +150,18 @@ public class DBManager extends SQLiteOpenHelper {
         if (Integer.parseInt(id) < 0) {
             return true;
         } else {
-            return false;
+            //return false;
+            return true;
         }
     }
     //Checking whether or not a board name has been taken
     public boolean checkUserAvailable(String title) {
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor c = db.rawQuery("SELECT Name FROM users WHERE Name ='" + title + "'",null);
-        if (c != null) {
-            return true;
-        } else {
+        if (c.getCount()>0) {
             return false;
+        } else {
+            return true;
         }
     }
     //The method for creating a new board
