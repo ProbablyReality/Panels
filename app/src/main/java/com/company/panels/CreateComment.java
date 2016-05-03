@@ -10,6 +10,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.EditText;
+import android.widget.Switch;
 
 public class CreateComment extends AppCompatActivity {
 
@@ -46,7 +47,12 @@ public class CreateComment extends AppCompatActivity {
     }
     public void postComment() {
         EditText editText = (EditText)findViewById(R.id.editContent);
-        mydb.createComment(thisID,"Unattributed",editText.getText().toString());
+        Switch s = (Switch)findViewById(R.id.anon);
+        String author = mydb.getUsername();
+        if (s.isChecked()) {
+            author = "Unattributed";
+        }
+        mydb.createComment(thisID,author,editText.getText().toString());
         toViewPanel();
     }
     public void toViewPanel() {

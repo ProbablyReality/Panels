@@ -5,22 +5,70 @@
     android:elevation="4dp"
     android:background="#FFFFFF">
 
-    <EditText
-        android:layout_width="fill_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/editContent"
-        android:hint="Content"
-        android:layout_gravity="center_horizontal|top"
-        android:layout_below="@+id/frameLayout"
-        android:layout_centerHorizontal="true"
-        android:textColorHint="#666666"
-        android:typeface="sans"
-        android:gravity="top"
-        android:background="#ffffff"
-        android:nestedScrollingEnabled="false"
-        android:singleLine="false"
-        android:textColor="#000000"
-        android:layout_margin="10dp"
-        android:maxLength="2048" />
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/scrollView3" >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/relativeLayout6"
+                android:elevation="4dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_marginTop="1dp"
+                android:background="@color/colorPanel" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Post Anonymously"
+                    android:id="@+id/textView6"
+                    android:textSize="18dp"
+                    android:textColor="#222222"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_centerVertical="true" />
+
+                <Switch
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/anon"
+                    android:checked="false"
+                    android:textSize="20sp"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_margin="10dp"
+                    android:textColor="#000000" />
+            </RelativeLayout>
+
+            <EditText
+                android:layout_width="fill_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/editContent"
+                android:hint="Content"
+                android:layout_gravity="center_horizontal|top"
+                android:layout_below="@+id/relativeLayout6"
+                android:layout_centerHorizontal="true"
+                android:textColorHint="#666666"
+                android:typeface="sans"
+                android:gravity="top"
+                android:background="#ffffff"
+                android:nestedScrollingEnabled="false"
+                android:singleLine="false"
+                android:textColor="#000000"
+                android:layout_margin="10dp"
+                android:maxLength="2048" />
+        </RelativeLayout>
+    </ScrollView>
 
 </RelativeLayout>

@@ -61,11 +61,14 @@ ViewPanel extends AppCompatActivity {
         switch (item.getItemId()) {
             case R.id.comment:
                 toCreateComment();
+                Log.d("TEST","Here");
+                break;
             case R.id.delete:
                 deletePanel();
+                Log.d("TEST","Here2");
             default:
-                return super.onOptionsItemSelected(item);
         }
+        return super.onOptionsItemSelected(item);
     }
     @Override
     public void onBackPressed() {

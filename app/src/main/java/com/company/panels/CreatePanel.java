@@ -13,6 +13,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Switch;
 
 public class CreatePanel extends AppCompatActivity {
     DBManager mydb;
@@ -112,7 +113,11 @@ public class CreatePanel extends AppCompatActivity {
         Cursor boardAvailable = mydb.checkBoardAvailable(editBoard.getText().toString().toLowerCase());
         if (boardAvailable.getCount() > 0 ) {
             String Board = editBoard.getText().toString().toLowerCase();
-            String Author = "Unattributed";
+            Switch anonPost = (Switch)findViewById(R.id.anon);
+            String Author = mydb.getUsername();
+            if (anonPost.isChecked()) {
+                Author = "Unattributed";
+            }
             EditText editTitle = (EditText) findViewById(R.id.panelTitle);
             String panelTitle = editTitle.getText().toString();
             EditText editContent = (EditText) findViewById(R.id.editContent);

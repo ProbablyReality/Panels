@@ -40,12 +40,13 @@ public class DBManager extends SQLiteOpenHelper {
         onCreate(db);
     }
     //The method for creating a new board
-    public void createBoard(String name, Boolean isPublic, Boolean restrictPosts) {
+    public void createBoard(String name, Boolean isPublic, Boolean restrictPosts,String owner) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put("Name", name);
         contentValues.put("IsPublic", isPublic);
         contentValues.put("RestrictPosts", restrictPosts);
+        contentValues.put("Owner", owner);
         db.insert("boards", null, contentValues);
         ContentValues contentValuesB = new ContentValues();
         contentValuesB.put("Board", name);
@@ -150,8 +151,7 @@ public class DBManager extends SQLiteOpenHelper {
         if (Integer.parseInt(id) < 0) {
             return true;
         } else {
-            //return false;
-            return true;
+            return false;
         }
     }
     //Checking whether or not a board name has been taken
@@ -175,7 +175,14 @@ public class DBManager extends SQLiteOpenHelper {
         db.execSQL("UPDATE user SET UserID=" + c.getString(0) + " WHERE UserID=-1");
 
     }
-
+    public String getUsername() {
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor c = db.rawQuery("SELECT UserID FROM user",null);
+        c.moveToFirst();
+        Cursor d = db.rawQuery("SELECT Name FROM users WHERE _id ='" + c.getString(0) + "'",null);
+        d.moveToFirst();
+        return d.getString(0);
+    }
 }
 
 

@@ -56,7 +56,7 @@ public class CreateBoard extends AppCompatActivity {
                     isPublic = (Switch)findViewById(R.id.isPublic);
                     restrictPost = (Switch)findViewById(R.id.restrictPost);
                     //This sends the data into the class where it is added to the database
-                    mydb.createBoard(boardTitle.getText().toString().toLowerCase(),isPublic.isChecked(),restrictPost.isChecked());
+                    mydb.createBoard(boardTitle.getText().toString().toLowerCase(),isPublic.isChecked(),restrictPost.isChecked(),mydb.getUsername());
                     toCreatePanel();
                 } else {
                     //tell user board already exists
