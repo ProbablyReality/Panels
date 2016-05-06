@@ -5,11 +5,17 @@ import android.database.Cursor;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.EditText;
 import android.widget.Switch;
+
+import com.firebase.client.DataSnapshot;
+import com.firebase.client.Firebase;
+import com.firebase.client.FirebaseError;
+import com.firebase.client.ValueEventListener;
 
 public class CreateBoard extends AppCompatActivity {
     DBManager mydb;
@@ -22,6 +28,7 @@ public class CreateBoard extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_board);
         setTitle("Create a Board");
+        Firebase.setAndroidContext(this);
         mydb = new DBManager(this);
         Cursor res = mydb.retrieveTemp();
         boardTitle = (EditText)findViewById(R.id.panelTitle);
@@ -50,18 +57,30 @@ public class CreateBoard extends AppCompatActivity {
         // Handle item selection
         switch (item.getItemId()) {
             case R.id.create:
+                final Firebase myFirebaseRef = new Firebase("https://popping-heat-1795.firebaseio.com/");
                 //Detect if the board already exists before continuing
-                Cursor boardAvailable = mydb.checkBoardAvailable(boardTitle.getText().toString().toLowerCase());
-                if (boardAvailable.getCount() == 0 ) {
-                    isPublic = (Switch)findViewById(R.id.isPublic);
-                    restrictPost = (Switch)findViewById(R.id.restrictPost);
-                    //This sends the data into the class where it is added to the database
-                    mydb.createBoard(boardTitle.getText().toString().toLowerCase(),isPublic.isChecked(),restrictPost.isChecked(),mydb.getUsername());
-                    toCreatePanel();
-                } else {
-                    //tell user board already exists
-                    TableExists();
+                myFirebaseRef.child("boards/" + boardTitle.getText().toString().toLowerCase() + "/isPublic").addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot snapshot) {
+                        if (snapshot.getValue() == null) {
+                            isPublic = (Switch)findViewById(R.id.isPublic);
+                            restrictPost = (Switch)findViewById(R.id.restrictPost);
+                            Log.d("WEWLAD","2");
+                            myFirebaseRef.child("boards/" + boardTitle.getText().toString().toLowerCase() + "/isPublic")
+                                    .setValue(java.lang.Boolean.toString(isPublic.isChecked()));
+                            myFirebaseRef.child("boards/" + boardTitle.getText().toString().toLowerCase() + "/restrictPost")
+                                    .setValue(java.lang.Boolean.toString(restrictPost.isChecked()));
+                            toCreatePanel();
+                        } else {
+                            //tell user board already exists
+                            Log.d("WEWLAD","1");
+                            TableExists();
+                        }
                     }
+                    @Override
+                    public void onCancelled(FirebaseError arg0) {
+                    }
+                });
             default:
                 return super.onOptionsItemSelected(item);
         }
